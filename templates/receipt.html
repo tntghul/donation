@@ -1,0 +1,71 @@
+{% extends "main_layout.html" %}
+{% block content %}
+
+
+
+
+
+<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
+    style="margin-top: 50px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+
+                        
+                        <div class="pt-4 pb-2">
+                            <h2 class="card-title text-center pb-0 fs-4 mb-5">Share Care</h2>
+                                
+                                <form class="row g-3" action="/receipt" method="post">
+                                    {% for r in record %}
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <h6>Name: {{r[0]}}</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>Date : {{r[5]}}</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h6>Email : {{r[1]}}</h6>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6>Pid : {{r[2]}}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6>ord _id: {{r[3]}}</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6>Amount paid : {{r[4]}}</h6>
+                                        </div>
+                                    </div>
+                                    {% endfor %}          
+                                </form>
+                               
+                                
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+
+<body background="/static/assets/img/hero-bg2.jpg">
+
+ <main>
+    <div class="container">
+      {% with messages=get_flashed_messages()%}
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+           alert(" {{message}} ");
+        </script>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" style="margin-top: 50px;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="/" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block text-warning"><h3>ShareCare</h3></span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Donation Box</h5>
+                    <p class="text-center small">be the reason behind someone's smile</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation" action="/donation_amt" method="post" >
+                    <div class="col-6 text-center">
+                      <input type="radio" class="btn-check" onclick="display(this)" name="options" value="500" id="option1"autocomplete="off" checked >
+                      <label class="btn btn-outline-success fs-4" for="option1" style="padding: 15px 35px;">₹500</label>
+                    </div>
+                    
+
+                    <div class="col-6 text-center">
+                      <input type="radio" class="btn-check" onclick="display(this)" name="options" value="1000" id="option2"autocomplete="off">
+                      <label class="btn btn-outline-success fs-4" for="option2" style="padding: 15px 30px;">₹1000</label>
+                    </div>
+
+                    <div class="col-6 text-center">
+                      <input type="radio" class="btn-check" onclick="display(this)" name="options" value="2500" id="option3"
+                          autocomplete="off">
+                      <label class="btn btn-outline-success fs-4" for="option3" style="padding: 15px 30px;">₹2500</label>
+                    </div>
+
+                    <div class="col-6 text-center">
+                      <input type="radio" class="btn-check" onclick="display(this)" name="options" value="5000" id="option4"
+                          autocomplete="off">
+                      <label class="btn btn-outline-success fs-4" for="option4" style="padding: 15px 30px;">₹5000</label>
+                    </div>
+                    <div class="col-12 text-center">
+                      <label for="yourUsername"  class="form-label ">Enter Amount Manually</label>
+                      <div class="input-group has-validation">
+                          <input type="text" id="damt" name="damt" class="form-control">
+                          
+                          <div class="invalid-feedback">Please enter amount</div>
+                      </div>
+                  </div>
+
+                    
+
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit">Next</button>
+                  </div>
+                    
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+<script>
+
+    function display(obj){
+      document.getElementById("damt").value=obj.value;
+    }
+
+</script>
+
+  </body>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% endblock %}

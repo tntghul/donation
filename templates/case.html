@@ -1,0 +1,45 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+
+<section style="margin-top: 150px ; margin-left: 200px;">
+
+    {% for r in record %}
+    <div class="row featurette">
+
+        <div class="col-md-5">
+            <img src="../static/images/{{r[-1]}}" alt="" width="400" height="400">
+            <br>
+            <h3 class="featurette-heading">Amount Required: {{r[9]}}</h3>
+
+            <div class="row">
+                <div class="col-4">
+                    <h3>Amount Received: </h3>
+                </div>
+
+                <div class="col-12">
+                    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{data}}%;"></div>
+                      </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h1 class="featurette-heading">Patient Details</h1>
+            <h2 class="featurette-heading">Case detail :{{r[7]}} </h2>
+            <p class="lead"> Name :{{r[1]}}</p>
+            <p class="lead"> Age :{{r[4]}}</p>
+            <p class="lead"> Gender :{{r[3]}}</p>
+            <p class="lead">Hospital Name :{{r[5]}}</p>
+            <p class="lead">Patient Address :{{r[8]}}</p>
+            <p class="lead">Hospital Address :{{r[6]}}</p>
+
+            <p class="lead">Blood Group :{{r[10]}}</p>
+            <a href="/donation_amt?caseid={{r[0]}}"> <button id="rzp_button" class="btn btn-success">DONATE</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,195 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+
+<body background="/static/assets/img/hero-bg2.jpg">
+
+ <main>
+    <div class="container">
+      {% with messages=get_flashed_messages()%}
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+           alert(" {{message}} ");
+        </script>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" style="margin-top: 50px;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="/" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block text-warning"><h3>ShareCare</h3></span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Enter Bank Details</h5>
+                    <p class="text-center small">For payment purpose</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation" action="/bank_details" method="post">
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Name</label>
+                      <input type="text" name="bname" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Please, enter your name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="pannumber " class="form-label">Pan Number</label>
+                      <input type="text" name="pan" class="form-control" id="pannumber" required>
+                      <div class="invalid-feedback">Please enter ur pan number</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="bankname" class="form-label">Bank Name</label>
+                      <input type="text" name="bank" class="form-control" id="bankname" required>
+                      <div class="invalid-feedback">Please enter Bank name!</div>
+                    </div>
+
+
+                    <div class="col-12">
+                      <label for="accountnumber" class="form-label">Account Number</label>
+                      <input type="text" name="account" class="form-control" id="accountnumber" required>
+                      <div class="invalid-feedback">Please enter ur account number</div>
+                    </div>
+
+                    
+
+                    <div class="col-12">
+                      <label for="mobile" class="form-label">Mobile</label>
+                      <input type="text" name="bmobile" class="form-control" id="mobile" required>
+                      <div class="invalid-feedback">Please enter ur number!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="agree" value="true" id="myCheck" onclick="myFunction()">
+                        <label class="form-check-label" for="rememberMe">
+                          <!-- Button trigger modal -->
+                          <a type="button"  data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Accept Terms & Conditions
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Terms & Conditions</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <pre>
+
+1. Acceptance of Terms:Users must accept and agree 
+to these terms and conditions to use the donation app.
+2. Donation Process:Clearly outline the process of making
+a donation through the app.Specify any fees or charges 
+associated with the donation process.
+3. Eligibility:Specify the eligibility criteria for users to 
+make donations.Users must be of legal age or have parental
+consent.
+4. User Accounts:Users may need to create an account to make 
+donations.Users are responsible for maintaining the 
+confidentiality of their account information.
+5. Donor Responsibility:Donors are responsible for ensuring 
+the accuracy of the information provided during the donation
+process.Donors should comply with all relevant laws and
+regulations.
+6. Use of Donations:Clearly state the purpose for which the 
+donations will be used.Provide transparency about how the funds
+will be allocated.
+7. Refund Policy:Outline the conditions under which donations are
+refundable.Specify the process for requesting a refund.
+8. Privacy Policy:Describe how user data will be collected, used,
+and protected.Assure users that their personal information will
+not be shared without their consent.
+9. Intellectual Property:Specify the ownership of content and
+intellectual property related to the donation app.
+Users should not reproduce or distribute content without permission.
+10. Termination of Accounts:Outline the circumstances under 
+which user accounts may be terminated.
+- Reserve the right to suspend or terminate accounts for misuse
+or vi1to Terms:- Reserve the right to update or modify the terms
+and conditions.
+- Notify users of any changes and provide a timeline for their
+implementation.
+12. Dispute Resolution:- Outline the process for resolving
+disputes between users and the donation app.
+- Specify any jurisdiction or venue for legal actions.
+13. Limitation of Liability:- Limit the app's liability for any 
+damages arising from the use of the donation platform.
+14. Contact Information:- Provide contact information for
+users to reach out for support or inquiries.
+15. Governing Law:- Specify the governing law that will 
+apply to the terms and conditions.Remember, it's crucial
+to consult with legal professionals to ensure that your
+terms and conditions comply with relevant laws and regulations
+in your jurisdiction.
+
+                                  </pre>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit" id="text" style="display: none;">Create Case</button>
+                    </div>
+                    
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <script>
+    function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+  </script>
+
+  </body>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% endblock %}

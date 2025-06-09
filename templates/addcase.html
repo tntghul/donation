@@ -1,0 +1,142 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+
+<body background="/static/assets/img/hero-bg2.jpg">
+
+ <main>
+    <div class="container">
+      {% with messages=get_flashed_messages()%}
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+           alert(" {{message}} ");
+        </script>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" style="margin-top: 50px;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4 mt-5">
+                <a href="/" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block"><h3 class="text-white"> ShareCare</h3></span>
+                </a>
+              </div> 
+                <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Enter Case Details</h5>
+                    <p class="text-center small">Enter patient details to add case</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation" action="/addcase" method="post" enctype="multipart/form-data">
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Patient Name</label>
+                      <input type="text" name="pname" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Please, enter your name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="mobile" class="form-label">ID (Gov. ID)</label>
+                      <input type="text" name="pid" class="form-control" id="mobile" required>
+                      <div class="invalid-feedback">Please enter a valid Gov. ID!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="mobile" class="form-label">Gender</label>
+                      <input type="text" name="gender" class="form-control" id="mobile" required>
+                      <div class="invalid-feedback">Please enter patient Gender!</div>
+                    </div>
+
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Age (in years)</label>
+                      <input type="text" name="age" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Age!</div>
+                    </div>
+
+                    
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Case Details</label>
+                      <input type="text" name="cdetails" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Case Details!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Patient Address</label>
+                      <input type="text" name="paddress" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Patient Address!</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Hospital Name</label>
+                      <input type="text" name="hname" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Hospital Name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Hospital Address</label>
+                      <input type="text" name="haddress" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Hospital Address!</div>
+                    </div>
+
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Amount Required</label>
+                      <input type="text" name="amt" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter Amount!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Blood Group</label>
+                      <input type="text" name="blood" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Please enter blood group!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="">Photo1 upload</label>
+                      <input type="file" name="p1" class="form-control border-warning" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="">Photo2 upload</label>
+                      <input type="file" name="p2" class="form-control border-warning" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="">Photo3 upload</label>
+                      <input type="file" name="p3" class="form-control border-warning" required>
+                    </div>
+
+                    
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Next</button>
+                    </div>
+                    
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+   </main>
+  </body>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% endblock %}

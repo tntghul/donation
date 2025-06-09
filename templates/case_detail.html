@@ -1,0 +1,70 @@
+{% extends "user_layout.html" %}
+{% block content %}
+
+<body background="/static/assets/img/hero-bg2.jpg"></body>
+    
+    <!-- ======= CASES ======= -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a" style="color: white;" >TOP CASES</h2>
+              </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            {% for r in record %}
+            
+
+              
+                <div class="carousel-item-b swiper-slide">
+                  <div class="card-box-a card-shadow">
+                    <div class="swiper-slide carousel-item-a intro-item bg-image">
+                      <img src="../static/images/{{r[-1]}}" alt="" class="img-a img-fluid" style="width: 360px!important;height: 300px!important;">
+                    </div>
+                    <div class="overlay overlay-a"></div>
+                    <div class="card-overlay">
+                      <div class="card-overlay-a-content">
+                        <div class="card-header-a">
+                          <h2 class="card-title-a">
+                            <a href="/case?caseid={{r[0]}}">{{r[1]}}</a>
+                          </h2>
+                        </div>
+                        <div class="card-body-a">
+                          <div class="price-box d-flex">
+                            <p class="content-d color-text-a">
+                              {{r[7]}}
+                            </p>
+                          </div>
+                          <div>
+                            <span class="price-a"> {{r[9]}}</span>
+                          </div>
+                          <br>
+                          <a href="/case?caseid={{r[0]}}" class="link-a">Click here to view
+                            <span class="bi bi-chevron-right"></span>
+                          </a>
+                        </div>
+                    
+                      </div>
+                    </div>
+                 </div>
+                </div>
+              
+              
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    
+    </section>
+
+
+
+{% endblock %}

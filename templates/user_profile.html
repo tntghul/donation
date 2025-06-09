@@ -1,0 +1,130 @@
+{% extends "user_layout.html" %}
+{% block content %}
+
+<body background="/static/assets/img/hero-bg2.jpg">
+
+    <main style="margin-top: 100px;margin-bottom: 100px; margin-left: 300px;">
+        <div class="container rounded-borders col-lg-8" style="background-color:white;border-radius: 10px;">
+            {% with messages=get_flashed_messages()%}
+            {% if messages %}
+            {% for message in messages %}
+            <script>
+                alert(" {{message}} ");
+            </script>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+            
+            
+                
+                <div class="row" style="background-color: rgb(153, 8, 27);">
+                    <h3 class="text-center mt-4" style="color:rgb(241, 234, 241); background-color: crimson;"><b><u><i
+                                    class="bi bi-person-vcard"></i>User Profile</u></b></h3>
+                    <div class="gallery-item h-100 text-center">
+                        {% if r %}
+                        {% for r in r %}
+                        <img src="../static/dp/{{r[0]}}"
+                            class="img" width="200"
+                            height="200" alt="profile pic">
+                        {% endfor %}
+                        {% else %}
+                        <img src="../static/images/user.png"
+                            class="img" width="200"
+                            height="200" alt="">
+                        {% endif %}
+                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                <i class="bi bi-pencil-square fs-4 text-white"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Please Upload a Photo</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="/ppic"  method="post" enctype="multipart/form-data">
+                                        <div class="modal-body">
+                                            <input type="file" name="upic" class="form-control" id="">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+                <form action="/user_profile" method="post" enctype="multipart/form-data" class="rounded-borders">
+                    {% for r in record %}
+                <div class="row">
+                    <div class="col">
+                        <label for=""><b><i class="bi bi-person"></i> Name</b></label>
+                        <input type="text" name="name" value="{{r[0]}}" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for=""><b><i class="bi bi-person-badge"></i> ID</b></label>
+                        <input type="email" name="gid" value="{{r[1]}}" class="form-control" disabled>
+                    </div>
+                </div>
+
+               
+
+                <div class="row">
+                    <div class="col">
+                        <label for=""><b><i class="bi bi-telephone"></i> Mobile</b></label>
+                        <input type="username" name="mobile" value="{{r[3]}}" class="form-control" >
+                    </div>
+                    <div class="col">
+                        <label for=""><b><i class="bi bi-envelope-at"></i> Email</b></label>
+                        <input type="text" name="email" value="{{r[2]}}" class="form-control" disabled>
+                    </div>
+
+                    
+                </div>
+
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success mt-4">Update Now</button>
+                    </div>
+                    <div class="col">
+                        <a href="/user_password"><button type="button" class="btn btn-success mt-4">Change
+                                Password</button></a>
+                    </div>
+                </div>
+            </form>
+                <div class="row">
+                    <div class="col">
+                        <a href="/user_logout"><button type="submit" class="btn btn-danger mt-4">Log Out</button></a>
+                    </div>
+                    <div class="col">
+                        <a class="text-danger" href="/user_account_delete"><button type="button"
+                                class="btn btn-danger mt-4">Account Delete</button></a>
+                    </div>
+                </div>
+                <br>
+            
+
+
+        </div>
+    </main>
+</body>
+
+
+
+{% endblock %}
